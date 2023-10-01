@@ -1,8 +1,10 @@
 //funcion iniciar Randomizador
 const botonRandomizador = document.getElementById("boton-randomizar")
 const spanPersonaje = document.getElementById("personaje")
+const spanCarreraMilitar = document.getElementById("carrera-militar")
 
 let personajes = ["Jhon Shepard", "Jane Shepard"]
+let carrerasMilitares = ["Soldado", "Infiltrado", "Vanguardia", "Centinela", "Adepto", "Ingeniero"]
 
 function iniciarRandomizador() {
     botonRandomizador.addEventListener("click", seleccionarPersonaje)
@@ -16,7 +18,10 @@ function seleccionarPersonaje() {
 }
 
 function seleccionarCarreraMilitar() {
-    
+    let carreraMilitar = aleatorio(0, carrerasMilitares.length -1)
+
+    spanCarreraMilitar.innerHTML = carrerasMilitares[carreraMilitar]
+    seleccionarPoderExtra()
 }
 
 function aleatorio(min, max) {

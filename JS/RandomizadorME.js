@@ -9,8 +9,8 @@ const spanUpgrade1ArmaPrincipal = document.getElementById("upgrade1-arma-princip
 const spanUpgrade2ArmaPrincipal = document.getElementById("upgrade2-arma-principal")
 
 let tipoDeArma
-let upgrade1AP
-let upgrade2AP
+let mejora1AP
+let mejora2AP
 let upgradesRestantes
 let personajes = ["Jhon Shepard", "Jane Shepard"]
 let carrerasMilitares = ["Soldado", "Infiltrado", "Vanguardia", "Centinela", "Adepto", "Ingeniero"]
@@ -22,10 +22,15 @@ let riflesDeAsalto = ["Argus M-55", "Avenger M-8", "Phaeston", "Fusil de Pulso G
 let subfusiles = ["Hornet M-25", "Locust M-12", "Shuriken M-4", "Tempest M-9", "Castig. Manada Sangrienta", "Hurricane de N7", "Subfusil de Plasma Geth"]
 let escopetas = ["Claymore M-300", "Discípulo", "Eviscerator M-22", "Escopeta de Plasma Geth", "Lanzapicos Graal", "Katana M-23", "Raider AT-12", "Scimitar M-27", "Wraith M-11", "Carabina Reegar", "Escopeta Venom", "N7 Piranha", "Crusader de N7"]
 let pistolasPesadas = ["Carnifex M-6", "Paladin M-77", "Phalanx M-5", "Predator M-3", "Scorpion", "Talon M-358", "Pistola de Arcos", "Pistola Executioner", "Eagle de N7"]
+
 let upgradesFrancotiradores = ["Mira Mejorada", "Mod. Perforación", "Cañón Alargado", "Cargador Térmico", "Módulo de Concentración", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad"]
+
 let upgradesRifleDeAsalto = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
+
 let upgradesSubfusiles = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran Calibre", "Mejora de Cargador", "Materiales Ultraligeros", "Magnificador de Poderes", "Sistema de Retroceso", "Cañón de Gran Velocidad"]
+
 let upgradesEscopetas = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", "Mod. Trituración", "Cargador Térmico", "Materiales Ultraligeros", "Omnihoja", "Cañón de Gran Velocidad"]
+
 let upgradesPistolas = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
 
 function iniciarRandomizador() {
@@ -94,25 +99,33 @@ function seleccionarArmaPrincipal() {
 function seleccionarUpgradesArmaPrincipal() {
     if (tiposDeArmas[tipoDeArma] === "Rifle Francotirador") {
         console.log(upgradesFrancotiradores)
-        upgrade1AP = aleatorio(0, upgradesFrancotiradores.length -1)
-        console.log(upgrade1AP)
-        spanUpgrade1ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade1AP]
-        upgradesFrancotiradores.splice(upgrade1AP, 1)
+        let upgrade1APAleatorio = aleatorio(0, upgradesFrancotiradores.length -1)
+        console.log(upgrade1APAleatorio)
+        spanUpgrade1ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade1APAleatorio]
+        mejora1AP = upgradesFrancotiradores[upgrade1APAleatorio]
+        upgradesFrancotiradores.splice(upgrade1APAleatorio, 1)
         console.log(upgradesFrancotiradores)
-        upgrade2AP = aleatorio(0, upgradesFrancotiradores.length -1)
-        console.log(upgrade2AP)
-        spanUpgrade2ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade2AP]
+        
+        resolverConflictoFrancotirador()
+      
+        let upgrade2APAleatorio = aleatorio(0, upgradesFrancotiradores.length -1)
+        console.log(upgrade2APAleatorio)
+        spanUpgrade2ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade2APAleatorio]
     }
     else if (tiposDeArmas[tipoDeArma] === "Rifle de Asalto") {
         console.log(upgradesRifleDeAsalto)
-        upgrade1AP = aleatorio(0, upgradesRifleDeAsalto.length -1)
-        console.log(upgrade1AP)
-        spanUpgrade1ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade1AP]
-        upgradesRifleDeAsalto.splice(upgrade1AP, 1)
+        let upgrade1APAleatorio = aleatorio(0, upgradesRifleDeAsalto.length -1)
+        console.log(upgrade1APAleatorio)
+        spanUpgrade1ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade1APAleatorio]
+        mejora1AP
+        upgradesRifleDeAsalto.splice(upgrade1APAleatorio, 1)
         console.log(upgradesRifleDeAsalto)
-        upgrade2AP = aleatorio(0, upgradesRifleDeAsalto.length -1)
-        console.log(upgrade2AP)
-        spanUpgrade2ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade2AP]
+
+        resolverConflictoAsalto()
+
+        let upgrade2APAleatorio = aleatorio(0, upgradesRifleDeAsalto.length -1)
+        console.log(upgrade2APAleatorio)
+        spanUpgrade2ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade2APAleatorio]
     }
     else if (tiposDeArmas[tipoDeArma] === "Subfusil") {
         console.log(upgradesSubfusiles)
@@ -136,7 +149,54 @@ function seleccionarUpgradesArmaPrincipal() {
         console.log(upgrade2AP)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2AP]
     }
+    
     //Pendiente resolver conflicto de upgrades de un mismo tipo
+}
+
+function resolverConflictoFrancotirador() {
+    console.log(mejora1AP)
+    if (mejora1AP === "Mira Mejorada") {
+        upgradesFrancotiradores.splice(5, 1)
+    } 
+    else if (mejora1AP === "Cañón Alargado") {
+        upgradesFrancotiradores.splice(6, 1)
+    }
+    else if (mejora1AP === "Módulo de Concentración") {
+        upgradesFrancotiradores.splice(4, 1)
+    }
+    else if (mejora1AP === "Mira Térmica") {
+        upgradesFrancotiradores.splice(0, 1)
+    } 
+    else if (mejora1AP === "Cañón de Gran Velocidad") {
+        upgradesFrancotiradores.splice(2, 1)
+    }
+    else if (mejora1AP === "Materiales Ultraligeros") {
+        upgradesFrancotiradores.splice(4, 1)   
+    }
+    console.log(upgradesFrancotiradores)
+}
+
+function resolverConflictoAsalto() {
+    console.log(mejora1AP)
+    if (mejora1AP === "Mira de precisión") {
+        upgradesRifleDeAsalto.splice(5, 1)
+    } 
+    else if (mejora1AP === "Cañón Alargado") {
+        upgradesRifleDeAsalto.splice(6, 1)
+    }
+    else if (mejora1AP === "Mod. Perforación") {
+        upgradesRifleDeAsalto.splice(4, 1)
+    }
+    else if (mejora1AP === "Mira Térmica") {
+        upgradesRifleDeAsalto.splice(0, 1)
+    } 
+    else if (mejora1AP === "Cañón de Gran Velocidad") {
+        upgradesRifleDeAsalto.splice(1, 1)
+    }
+    else if (mejora1AP === "Materiales Ultraligeros") {
+        upgradesRifleDeAsalto.splice(2, 1)   
+    }
+    console.log(upgradesRifleDeAsalto) 
 }
 
 function seleccionarArmaSecundaria() {

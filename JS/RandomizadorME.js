@@ -7,10 +7,13 @@ const spanTipoDeArma = document.getElementById("tipo-de-arma")
 const spanArmaPrincipal = document.getElementById("arma-principal")
 const spanUpgrade1ArmaPrincipal = document.getElementById("upgrade1-arma-principal")
 const spanUpgrade2ArmaPrincipal = document.getElementById("upgrade2-arma-principal")
+const spanArmaSecundaria = document.getElementById("arma-secundaria")
+const spanUpgrade1ArmaSecundaria = document.getElementById("upgrade1-arma-secundaria")
+const spanUpgrade2ArmaSecundaria = document.getElementById("upgrade2-arma-secundaria")
 
 let tipoDeArma
 let mejora1AP
-let mejora2AP
+let mejora1AS
 let upgradesRestantes
 let personajes = ["Jhon Shepard", "Jane Shepard"]
 let carrerasMilitares = ["Soldado", "Infiltrado", "Vanguardia", "Centinela", "Adepto", "Ingeniero"]
@@ -157,7 +160,7 @@ function seleccionarUpgradesArmaPrincipal() {
         console.log(upgrade2APAleatorio)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2APAleatorio]
     }
-    
+    seleccionarArmaSecundaria()
     //Pendiente resolver conflicto de upgrades de un mismo tipo
 }
 
@@ -254,10 +257,51 @@ function resolverConflictoEscopeta() {
 }
 
 function seleccionarArmaSecundaria() {
-    let armaSecundaria = aleatorio(0, pistolasPesadas.length -1)
+    let armaSecundariaAleatorio = aleatorio(0, pistolasPesadas.length -1)
 
-    spanArmaSecundaria.innerHTML = pistolasPesadas[armaSecundaria]
+    spanArmaSecundaria.innerHTML = pistolasPesadas[armaSecundariaAleatorio]
     seleccionarUpgradesPistola()
+}
+
+function seleccionarUpgradesPistola() {
+    console.log(upgradesPistolas)
+    let upgrade1ASAleatorio = aleatorio(0, upgradesPistolas.length -1)
+    console.log(upgrade1ASAleatorio)
+    spanUpgrade1ArmaSecundaria.innerHTML = upgradesPistolas[upgrade1ASAleatorio]
+    mejora1AS = upgradesPistolas[upgrade1ASAleatorio]
+    upgradesPistolas.splice(upgrade1ASAleatorio, 1)
+    console.log(upgradesPistolas)
+    
+    resolverConflictoPistola()
+    
+    let upgrade2ASAleatorio = aleatorio(0, upgradesPistolas.length -1)
+    console.log(upgrade2ASAleatorio)
+    spanUpgrade2ArmaSecundaria.innerHTML = upgradesPistolas[upgrade2ASAleatorio]
+}
+
+function resolverConflictoPistola() {
+    console.log(mejora1AS)
+    if (mejora1AS === "Mira para Pistola") {
+        upgradesPistolas.splice(4, 1)
+    } 
+    else if (mejora1AS === "Cañón de Gran Calibre") {
+        upgradesPistolas.splice(6, 2)
+    }
+    else if (mejora1AS === "Mejora de Cargador") {
+        upgradesPistolas.splice(5, 1)
+    }
+    else if (mejora1AS === "Materiales Ultraligeros") {
+        upgradesPistolas.splice(2, 1)
+    } 
+    else if (mejora1AS === "Cañón Pesado") {
+        upgradesPistolas.splice(7, 1)
+        upgradesPistolas.splice(1, 1)
+    }
+    else if (mejora1AS === "Sistema de Traumatismo Craneal") {
+        upgradesPistolas.splice(7, 1)
+        upgradesPistolas.splice(1, 1)   
+    }
+    console.log(upgradesPistolas) 
 }
 
 function aleatorio(min, max) {

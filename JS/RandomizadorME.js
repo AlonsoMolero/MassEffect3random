@@ -117,7 +117,7 @@ function seleccionarUpgradesArmaPrincipal() {
         let upgrade1APAleatorio = aleatorio(0, upgradesRifleDeAsalto.length -1)
         console.log(upgrade1APAleatorio)
         spanUpgrade1ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade1APAleatorio]
-        mejora1AP
+        mejora1AP = upgradesRifleDeAsalto[upgrade1APAleatorio]
         upgradesRifleDeAsalto.splice(upgrade1APAleatorio, 1)
         console.log(upgradesRifleDeAsalto)
 
@@ -129,14 +129,18 @@ function seleccionarUpgradesArmaPrincipal() {
     }
     else if (tiposDeArmas[tipoDeArma] === "Subfusil") {
         console.log(upgradesSubfusiles)
-        upgrade1AP = aleatorio(0, upgradesSubfusiles.length -1)
-        console.log(upgrade1AP)
-        spanUpgrade1ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade1AP]
-        upgradesSubfusiles.splice(upgrade1AP, 1)
+        let upgrade1APAleatorio = aleatorio(0, upgradesSubfusiles.length -1)
+        console.log(upgrade1APAleatorio)
+        spanUpgrade1ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade1APAleatorio]
+        mejora1AP = upgradesSubfusiles[upgrade1APAleatorio]
+        upgradesSubfusiles.splice(upgrade1APAleatorio, 1)
         console.log(upgradesSubfusiles)
-        upgrade2AP = aleatorio(0, upgradesSubfusiles.length -1)
-        console.log(upgrade2AP)
-        spanUpgrade2ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade2AP]
+
+        resolverConflictoSubfusil()
+
+        let upgrade2APAleatorio = aleatorio(0, upgradesSubfusiles.length -1)
+        console.log(upgrade2APAleatorio)
+        spanUpgrade2ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade2APAleatorio]
     }
     else {
         console.log(upgradesEscopetas)
@@ -197,6 +201,29 @@ function resolverConflictoAsalto() {
         upgradesRifleDeAsalto.splice(2, 1)   
     }
     console.log(upgradesRifleDeAsalto) 
+}
+
+function resolverConflictoSubfusil() {
+    console.log(mejora1AP)
+    if (mejora1AP === "Mira de Subfusil") {
+        upgradesSubfusiles.splice(4, 1)
+    } 
+    else if (mejora1AP === "Cañón Gran Calibre") {
+        upgradesSubfusiles.splice(6, 1)
+    }
+    else if (mejora1AP === "Materiales Ultraligeros") {
+        upgradesSubfusiles.splice(5, 1)
+    }
+    else if (mejora1AP === "Magnificador de Poderes") {
+        upgradesSubfusiles.splice(0, 1)
+    } 
+    else if (mejora1AP === "Cañón de Gran Velocidad") {
+        upgradesSubfusiles.splice(2, 1)
+    }
+    else if (mejora1AP === "Sistema de Retroceso") {
+        upgradesSubfusiles.splice(4, 1)   
+    }
+    console.log(upgradesSubfusiles) 
 }
 
 function seleccionarArmaSecundaria() {

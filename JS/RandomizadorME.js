@@ -144,14 +144,18 @@ function seleccionarUpgradesArmaPrincipal() {
     }
     else {
         console.log(upgradesEscopetas)
-        upgrade1AP = aleatorio(0, upgradesEscopetas.length -1)
-        console.log(upgrade1AP)
-        spanUpgrade1ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade1AP]
-        upgradesEscopetas.splice(upgrade1AP, 1)
+        let upgrade1APAleatorio = aleatorio(0, upgradesEscopetas.length -1)
+        console.log(upgrade1APAleatorio)
+        spanUpgrade1ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade1APAleatorio]
+        mejora1AP = upgradesEscopetas[upgrade1APAleatorio]
+        upgradesEscopetas.splice(upgrade1APAleatorio, 1)
         console.log(upgradesEscopetas)
-        upgrade2AP = aleatorio(0, upgradesEscopetas.length -1)
-        console.log(upgrade2AP)
-        spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2AP]
+
+        resolverConflictoEscopeta()
+
+        let upgrade2APAleatorio = aleatorio(0, upgradesEscopetas.length -1)
+        console.log(upgrade2APAleatorio)
+        spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2APAleatorio]
     }
     
     //Pendiente resolver conflicto de upgrades de un mismo tipo
@@ -224,6 +228,29 @@ function resolverConflictoSubfusil() {
         upgradesSubfusiles.splice(4, 1)   
     }
     console.log(upgradesSubfusiles) 
+}
+
+function resolverConflictoEscopeta() {
+    console.log(mejora1AP)
+    if (mejora1AP === "Cañón Delgado") {
+        upgradesEscopetas.splice(4, 1)
+    } 
+    else if (mejora1AP === "Cañón Gran Calibre") {
+        upgradesEscopetas.splice(6, 1)
+    }
+    else if (mejora1AP === "Bayoneta") {
+        upgradesEscopetas.splice(5, 1)
+    }
+    else if (mejora1AP === "Materiales Ultraligeros") {
+        upgradesEscopetas.splice(0, 1)
+    } 
+    else if (mejora1AP === "Cañón de Gran Velocidad") {
+        upgradesEscopetas.splice(1, 1)
+    }
+    else if (mejora1AP === "Omnihoja") {
+        upgradesEscopetas.splice(2, 1)   
+    }
+    console.log(upgradesEscopetas) 
 }
 
 function seleccionarArmaSecundaria() {

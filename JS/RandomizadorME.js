@@ -12,6 +12,8 @@ const spanUpgrade1ArmaSecundaria = document.getElementById("upgrade1-arma-secund
 const spanUpgrade2ArmaSecundaria = document.getElementById("upgrade2-arma-secundaria")
 const  spanArmadura = document.getElementById("armadura")
 const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-personalizada")
+const spanCompañero1 = document.getElementById("compañero-1")
+const spanCompañero2 = document.getElementById("compañero-2")
 
 let tipoDeArma
 let mejora1AP
@@ -38,11 +40,15 @@ let upgradesEscopetas = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", 
 
 let upgradesPistolas = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
 
-let armaduras = ["Armadura Personalizada", "Armadura N7", "Armadura Hahne-Kedar", "Armadura Arsenal Armax", "Armadura Consejo de Serrice", "Armadura Fabricación de Kassa", "Armadura Tecnología Ariake", "Armadura Materiales Rosenkov", "Armadura de Cerberus", "Armadura Ajax de Cerberus", "Armadura de Terminus", "Aramdura Inferno", "Armadura Sangre de Dragon", "Armadura de Recoletor", "Armadura Reckoner-Knight", "Armadura Defender de N7"]
+let armaduras = ["Armadura Personalizada", "Armadura N7", "Armadura Hahne-Kedar", "Armadura Arsenal Armax", "Armadura Consejo de Serrice", "Armadura Fabricación de Kassa", "Armadura Tecnología Ariake", "Armadura Materiales Rosenkov", "Armadura de Cerberus", "Armadura Ajax de Cerberus", "Armadura de Terminus", "Armadura Inferno", "Armadura Sangre de Dragon", "Armadura de Recoletor", "Armadura Reckoner-Knight", "Armadura Defender de N7"]
 
 let cascos = ["Casco N7", "Máscara de la Muerte", "Visera Kuwashii", "Interfaz de Centinela", "Casco Kestrel", "Casco Condensador", "Visera Arconte", "Visera Umbra", "Capucha de Reconocimiento", "Visor Mnemottécnico", "Visor Delumcore", "Casco Securitel"]
 
 let conjuntoInferior = ["N7", "Hahne-Kedar", "Arsenal Armax", "Consejo de Serrice", "Fabricación Kassa", "Tecnologías Ariake", "Materiales Rosenkov"]
+
+let peloton = ["Liara T'Soni", "James Vega", "Javik", "Garrus Vakarian", "SID", "Kaidan Alenko", "Ashley Williams", "Tali'Zorah"]
+
+let pelotonInicial = ["Liara T'Soni", "James Vega", "Javik", "Garrus Vakarian", "SID"]
 
 
 function iniciarRandomizador() {
@@ -321,6 +327,7 @@ function seleccionarArmadura() {
     if (armaduras[armaduraAleatorio] === "Armadura Personalizada") {
         armaduraPersonalizada()
     }
+    seleccionarPeloton()
 }
 
 function armaduraPersonalizada() {
@@ -348,6 +355,41 @@ function armaduraPersonalizada() {
     spanArmaduraPersonalizada.appendChild(elementoBrazo)
     spanArmaduraPersonalizada.appendChild(elementoPierna)
 
+}
+
+function seleccionarPeloton() {
+    console.log(peloton)
+    console.log(pelotonInicial)
+    let compañero1 = aleatorio(0, peloton.length -1)
+    console.log(compañero1)
+    spanCompañero1.innerHTML = peloton[compañero1]
+
+    if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams" || peloton[compañero1] === "Tali'Zorah") {
+        compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
+        console.log(compañero1Inicial)
+        spanCompañero1.innerHTML = peloton[compañero1] + " " + "(Utiliza a " + pelotonInicial[compañero1Inicial] + " hasta conseguir a " + peloton[compañero1] + ")"
+        peloton.splice(compañero1, 1) 
+        pelotonInicial.splice(compañero1Inicial, 1)
+        peloton.splice(compañero1Inicial, 1)
+    }
+    else {
+        peloton.splice(compañero1, 1)
+        pelotonInicial.splice(compañero1, 1)
+    }
+    
+    
+    console.log(peloton)    
+    console.log(pelotonInicial)
+    
+    let compañero2 = aleatorio(0, peloton.length -1)
+    spanCompañero2.innerHTML = peloton[compañero2]
+    console.log(compañero2)
+
+    if (peloton[compañero2] === "Kaidan Alenko" || peloton[compañero2] === "Ashley Williams" || peloton[compañero2] === "Tali'Zorah") {
+        compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
+        console.log(compañero2Inicial)
+        spanCompañero2.innerHTML = peloton[compañero2] + " " + "(Utiliza a " + pelotonInicial[compañero2Inicial] + " hasta conseguir a " + peloton[compañero2] + ")"
+    }   
 }
 
 function aleatorio(min, max) {

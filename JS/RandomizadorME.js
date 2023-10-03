@@ -10,6 +10,8 @@ const spanUpgrade2ArmaPrincipal = document.getElementById("upgrade2-arma-princip
 const spanArmaSecundaria = document.getElementById("arma-secundaria")
 const spanUpgrade1ArmaSecundaria = document.getElementById("upgrade1-arma-secundaria")
 const spanUpgrade2ArmaSecundaria = document.getElementById("upgrade2-arma-secundaria")
+const  spanArmadura = document.getElementById("armadura")
+const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-personalizada")
 
 let tipoDeArma
 let mejora1AP
@@ -35,6 +37,13 @@ let upgradesSubfusiles = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran
 let upgradesEscopetas = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", "Mod. Trituración", "Cargador Térmico", "Materiales Ultraligeros", "Omnihoja", "Cañón de Gran Velocidad"]
 
 let upgradesPistolas = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
+
+let armaduras = ["Armadura Personalizada", "Armadura N7", "Armadura Hahne-Kedar", "Armadura Arsenal Armax", "Armadura Consejo de Serrice", "Armadura Fabricación de Kassa", "Armadura Tecnología Ariake", "Armadura Materiales Rosenkov", "Armadura de Cerberus", "Armadura Ajax de Cerberus", "Armadura de Terminus", "Aramdura Inferno", "Armadura Sangre de Dragon", "Armadura de Recoletor", "Armadura Reckoner-Knight", "Armadura Defender de N7"]
+
+let cascos = ["Casco N7", "Máscara de la Muerte", "Visera Kuwashii", "Interfaz de Centinela", "Casco Kestrel", "Casco Condensador", "Visera Arconte", "Visera Umbra", "Capucha de Reconocimiento", "Visor Mnemottécnico", "Visor Delumcore", "Casco Securitel"]
+
+let conjuntoInferior = ["N7", "Hahne-Kedar", "Arsenal Armax", "Consejo de Serrice", "Fabricación Kassa", "Tecnologías Ariake", "Materiales Rosenkov"]
+
 
 function iniciarRandomizador() {
     botonRandomizador.addEventListener("click", seleccionarPersonaje)
@@ -161,7 +170,6 @@ function seleccionarUpgradesArmaPrincipal() {
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2APAleatorio]
     }
     seleccionarArmaSecundaria()
-    //Pendiente resolver conflicto de upgrades de un mismo tipo
 }
 
 function resolverConflictoFrancotirador() {
@@ -301,7 +309,45 @@ function resolverConflictoPistola() {
         upgradesPistolas.splice(7, 1)
         upgradesPistolas.splice(1, 1)   
     }
-    console.log(upgradesPistolas) 
+    console.log(upgradesPistolas)
+    seleccionarArmadura() 
+}
+
+function seleccionarArmadura() {
+    let armaduraAleatorio = aleatorio(0, armaduras.length -1)
+
+    spanArmadura.innerHTML = armaduras[armaduraAleatorio]
+    
+    if (armaduras[armaduraAleatorio] === "Armadura Personalizada") {
+        armaduraPersonalizada()
+    }
+}
+
+function armaduraPersonalizada() {
+    let casco = aleatorio(0, cascos.length -1)
+    let pecho = aleatorio(0, conjuntoInferior.length -1)
+    let hombro = aleatorio(0, conjuntoInferior.length -1)
+    let brazo = aleatorio(0, conjuntoInferior.length -1)
+    let pierna = aleatorio(0, conjuntoInferior.length -1)
+
+    let elementoCasco = document.createElement("p")
+    let elementoPecho = document.createElement("p")
+    let elementoHombro = document.createElement("p")
+    let elementoBrazo = document.createElement("p")
+    let elementoPierna = document.createElement("p")
+
+    elementoCasco.innerHTML = "Casco: " + cascos[casco]
+    elementoPecho.innerHTML = "Pecho: " + conjuntoInferior[pecho]
+    elementoHombro.innerHTML = "Hombros: " + conjuntoInferior[hombro]
+    elementoBrazo.innerHTML = "Brazos: " + conjuntoInferior[brazo]
+    elementoPierna.innerHTML = "Pierna: " + conjuntoInferior[pierna]
+
+    spanArmaduraPersonalizada.appendChild(elementoCasco)
+    spanArmaduraPersonalizada.appendChild(elementoPecho)
+    spanArmaduraPersonalizada.appendChild(elementoHombro)
+    spanArmaduraPersonalizada.appendChild(elementoBrazo)
+    spanArmaduraPersonalizada.appendChild(elementoPierna)
+
 }
 
 function aleatorio(min, max) {

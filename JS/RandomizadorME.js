@@ -323,27 +323,37 @@ function armaduraPersonalizada() {
 
 }
 
-function seleccionarPeloton() {    
+function seleccionarPeloton() {   
     let compañero1 = aleatorio(0, peloton.length -1)
     spanCompañero1.innerHTML = peloton[compañero1]
+    let compañero1Seleccionado = peloton[compañero1]
 
-    if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams" || peloton[compañero1] === "Tali'Zorah") {
-        compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
+    if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams") {
+        let compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
         spanCompañero1.innerHTML = peloton[compañero1] + " " + "(Utiliza a " + pelotonInicial[compañero1Inicial] + " hasta conseguir a " + peloton[compañero1] + ")"
-        peloton.splice(compañero1, 1) 
+        
+        peloton.splice(5, 2)
+        peloton.splice(compañero1Inicial, 1) 
         pelotonInicial.splice(compañero1Inicial, 1)
-        peloton.splice(compañero1Inicial, 1)
+    }
+    else if (peloton[compañero1] === "Tali'Zorah") {
+        let compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
+        spanCompañero1.innerHTML = peloton[compañero1] + " " + "(Utiliza a " + pelotonInicial[compañero1Inicial] + " hasta conseguir a " + peloton[compañero1] + ")"
+        
+        peloton.splice(compañero1, 1)
+        peloton.splice(compañero1Inicial, 1) 
+        pelotonInicial.splice(compañero1Inicial, 1)
     }
     else {
         peloton.splice(compañero1, 1)
         pelotonInicial.splice(compañero1, 1)
     }
-    
+
     let compañero2 = aleatorio(0, peloton.length -1)
     spanCompañero2.innerHTML = peloton[compañero2]
 
     if (peloton[compañero2] === "Kaidan Alenko" || peloton[compañero2] === "Ashley Williams" || peloton[compañero2] === "Tali'Zorah") {
-        compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
+        let compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
         spanCompañero2.innerHTML = peloton[compañero2] + " " + "(Utiliza a " + pelotonInicial[compañero2Inicial] + " hasta conseguir a " + peloton[compañero2] + ")"
     }   
 }

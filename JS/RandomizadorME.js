@@ -84,8 +84,6 @@ function seleccionarTipoDeArma() {
 }
 
 function seleccionarArmaPrincipal() {
-    console.log(tipoDeArma)
-    console.log(tiposDeArmas[tipoDeArma])
     if (tiposDeArmas[tipoDeArma] === "Rifle Francotirador") {
         for (let index = 0; index < riflesFrancotiradores.length; index++) {
             armasPrincipales.push(riflesFrancotiradores[index]);    
@@ -105,8 +103,6 @@ function seleccionarArmaPrincipal() {
             armasPrincipales.push(escopetas[index]);    
         }
     }
-
-    console.log(armasPrincipales)
     
     let armaPrincipal = aleatorio(0, armasPrincipales.length -1)
 
@@ -116,70 +112,53 @@ function seleccionarArmaPrincipal() {
 
 function seleccionarUpgradesArmaPrincipal() {
     if (tiposDeArmas[tipoDeArma] === "Rifle Francotirador") {
-        console.log(upgradesFrancotiradores)
         let upgrade1APAleatorio = aleatorio(0, upgradesFrancotiradores.length -1)
-        console.log(upgrade1APAleatorio)
         spanUpgrade1ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade1APAleatorio]
         mejora1AP = upgradesFrancotiradores[upgrade1APAleatorio]
         upgradesFrancotiradores.splice(upgrade1APAleatorio, 1)
-        console.log(upgradesFrancotiradores)
         
         resolverConflictoFrancotirador()
       
         let upgrade2APAleatorio = aleatorio(0, upgradesFrancotiradores.length -1)
-        console.log(upgrade2APAleatorio)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesFrancotiradores[upgrade2APAleatorio]
     }
     else if (tiposDeArmas[tipoDeArma] === "Rifle de Asalto") {
-        console.log(upgradesRifleDeAsalto)
         let upgrade1APAleatorio = aleatorio(0, upgradesRifleDeAsalto.length -1)
-        console.log(upgrade1APAleatorio)
         spanUpgrade1ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade1APAleatorio]
         mejora1AP = upgradesRifleDeAsalto[upgrade1APAleatorio]
         upgradesRifleDeAsalto.splice(upgrade1APAleatorio, 1)
-        console.log(upgradesRifleDeAsalto)
 
         resolverConflictoAsalto()
 
         let upgrade2APAleatorio = aleatorio(0, upgradesRifleDeAsalto.length -1)
-        console.log(upgrade2APAleatorio)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesRifleDeAsalto[upgrade2APAleatorio]
     }
     else if (tiposDeArmas[tipoDeArma] === "Subfusil") {
-        console.log(upgradesSubfusiles)
         let upgrade1APAleatorio = aleatorio(0, upgradesSubfusiles.length -1)
-        console.log(upgrade1APAleatorio)
         spanUpgrade1ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade1APAleatorio]
         mejora1AP = upgradesSubfusiles[upgrade1APAleatorio]
         upgradesSubfusiles.splice(upgrade1APAleatorio, 1)
-        console.log(upgradesSubfusiles)
 
         resolverConflictoSubfusil()
 
         let upgrade2APAleatorio = aleatorio(0, upgradesSubfusiles.length -1)
-        console.log(upgrade2APAleatorio)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesSubfusiles[upgrade2APAleatorio]
     }
     else {
-        console.log(upgradesEscopetas)
         let upgrade1APAleatorio = aleatorio(0, upgradesEscopetas.length -1)
-        console.log(upgrade1APAleatorio)
         spanUpgrade1ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade1APAleatorio]
         mejora1AP = upgradesEscopetas[upgrade1APAleatorio]
         upgradesEscopetas.splice(upgrade1APAleatorio, 1)
-        console.log(upgradesEscopetas)
 
         resolverConflictoEscopeta()
 
         let upgrade2APAleatorio = aleatorio(0, upgradesEscopetas.length -1)
-        console.log(upgrade2APAleatorio)
         spanUpgrade2ArmaPrincipal.innerHTML = upgradesEscopetas[upgrade2APAleatorio]
     }
     seleccionarArmaSecundaria()
 }
 
 function resolverConflictoFrancotirador() {
-    console.log(mejora1AP)
     if (mejora1AP === "Mira Mejorada") {
         upgradesFrancotiradores.splice(5, 1)
     } 
@@ -198,11 +177,9 @@ function resolverConflictoFrancotirador() {
     else if (mejora1AP === "Materiales Ultraligeros") {
         upgradesFrancotiradores.splice(4, 1)   
     }
-    console.log(upgradesFrancotiradores)
 }
 
 function resolverConflictoAsalto() {
-    console.log(mejora1AP)
     if (mejora1AP === "Mira de precisión") {
         upgradesRifleDeAsalto.splice(5, 1)
     } 
@@ -221,11 +198,9 @@ function resolverConflictoAsalto() {
     else if (mejora1AP === "Materiales Ultraligeros") {
         upgradesRifleDeAsalto.splice(2, 1)   
     }
-    console.log(upgradesRifleDeAsalto) 
 }
 
 function resolverConflictoSubfusil() {
-    console.log(mejora1AP)
     if (mejora1AP === "Mira de Subfusil") {
         upgradesSubfusiles.splice(4, 1)
     } 
@@ -244,11 +219,9 @@ function resolverConflictoSubfusil() {
     else if (mejora1AP === "Sistema de Retroceso") {
         upgradesSubfusiles.splice(4, 1)   
     }
-    console.log(upgradesSubfusiles) 
 }
 
 function resolverConflictoEscopeta() {
-    console.log(mejora1AP)
     if (mejora1AP === "Cañón Delgado") {
         upgradesEscopetas.splice(4, 1)
     } 
@@ -266,8 +239,7 @@ function resolverConflictoEscopeta() {
     }
     else if (mejora1AP === "Omnihoja") {
         upgradesEscopetas.splice(2, 1)   
-    }
-    console.log(upgradesEscopetas) 
+    } 
 }
 
 function seleccionarArmaSecundaria() {
@@ -278,23 +250,18 @@ function seleccionarArmaSecundaria() {
 }
 
 function seleccionarUpgradesPistola() {
-    console.log(upgradesPistolas)
     let upgrade1ASAleatorio = aleatorio(0, upgradesPistolas.length -1)
-    console.log(upgrade1ASAleatorio)
     spanUpgrade1ArmaSecundaria.innerHTML = upgradesPistolas[upgrade1ASAleatorio]
     mejora1AS = upgradesPistolas[upgrade1ASAleatorio]
     upgradesPistolas.splice(upgrade1ASAleatorio, 1)
-    console.log(upgradesPistolas)
     
     resolverConflictoPistola()
     
     let upgrade2ASAleatorio = aleatorio(0, upgradesPistolas.length -1)
-    console.log(upgrade2ASAleatorio)
     spanUpgrade2ArmaSecundaria.innerHTML = upgradesPistolas[upgrade2ASAleatorio]
 }
 
 function resolverConflictoPistola() {
-    console.log(mejora1AS)
     if (mejora1AS === "Mira para Pistola") {
         upgradesPistolas.splice(4, 1)
     } 
@@ -315,7 +282,6 @@ function resolverConflictoPistola() {
         upgradesPistolas.splice(7, 1)
         upgradesPistolas.splice(1, 1)   
     }
-    console.log(upgradesPistolas)
     seleccionarArmadura() 
 }
 
@@ -357,16 +323,12 @@ function armaduraPersonalizada() {
 
 }
 
-function seleccionarPeloton() {
-    console.log(peloton)
-    console.log(pelotonInicial)
+function seleccionarPeloton() {    
     let compañero1 = aleatorio(0, peloton.length -1)
-    console.log(compañero1)
     spanCompañero1.innerHTML = peloton[compañero1]
 
     if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams" || peloton[compañero1] === "Tali'Zorah") {
         compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
-        console.log(compañero1Inicial)
         spanCompañero1.innerHTML = peloton[compañero1] + " " + "(Utiliza a " + pelotonInicial[compañero1Inicial] + " hasta conseguir a " + peloton[compañero1] + ")"
         peloton.splice(compañero1, 1) 
         pelotonInicial.splice(compañero1Inicial, 1)
@@ -377,17 +339,11 @@ function seleccionarPeloton() {
         pelotonInicial.splice(compañero1, 1)
     }
     
-    
-    console.log(peloton)    
-    console.log(pelotonInicial)
-    
     let compañero2 = aleatorio(0, peloton.length -1)
     spanCompañero2.innerHTML = peloton[compañero2]
-    console.log(compañero2)
 
     if (peloton[compañero2] === "Kaidan Alenko" || peloton[compañero2] === "Ashley Williams" || peloton[compañero2] === "Tali'Zorah") {
         compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
-        console.log(compañero2Inicial)
         spanCompañero2.innerHTML = peloton[compañero2] + " " + "(Utiliza a " + pelotonInicial[compañero2Inicial] + " hasta conseguir a " + peloton[compañero2] + ")"
     }   
 }

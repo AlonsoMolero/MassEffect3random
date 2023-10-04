@@ -1,5 +1,7 @@
 //funcion iniciar Randomizador
 const botonRandomizador = document.getElementById("boton-randomizar")
+const botonReiniciar = document.getElementById("boton-reiniciar")
+botonReiniciar.style.display = "none"
 const spanPersonaje = document.getElementById("personaje")
 const spanCarreraMilitar = document.getElementById("carrera-militar")
 const spanPoderExtra = document.getElementById("poder-extra")
@@ -58,6 +60,9 @@ function iniciarRandomizador() {
 
 function seleccionarPersonaje() {
     botonRandomizador.disabled = true
+    botonRandomizador.style.display = "none"
+    botonReiniciar.style.display = "block"
+    botonReiniciar.addEventListener("click", reiniciar)
 
     let personaje = aleatorio(0, personajes.length -1)
 
@@ -359,6 +364,10 @@ function seleccionarPeloton() {
         let compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
         spanCompañero2.innerHTML = peloton[compañero2] + " " + "(Utiliza a " + pelotonInicial[compañero2Inicial] + " hasta conseguir a " + peloton[compañero2] + ")"
     }   
+}
+
+function reiniciar() {
+    location.reload()
 }
 
 function aleatorio(min, max) {

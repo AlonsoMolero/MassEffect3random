@@ -45,6 +45,24 @@ h2 {
     color: white;
 }
 
+#boton-reiniciar {
+    font-family: "Orbitron";
+    font-size: 18px;
+    font-weight: 800;
+    width: 300px;
+    height: 40px;
+    border-radius: 14px;
+    background: transparent;
+    border: 3px solid #009aff;
+    color: #ff4646;
+    margin: 15px;
+}
+
+#boton-reiniciar:hover {
+    background: #009aff;
+    color: white;
+}
+
 #seccion-de-orden {
     border: transparent;
     width: 700px;

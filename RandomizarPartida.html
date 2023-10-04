@@ -6,58 +6,64 @@
     </head>
     <body>
         <img src="./imagenes/ME3 Background.jpg" />
-        <h1>Randomizador de partidas para Mass Effect</h1>
-        <h2>Diviértete con éste desafio ✌</h2>
+        <h1>Randomizador de partidas para Mass Effect 3</h1>
+        <h2>Configura un inicio de partida loco ✌</h2>
         <section id="randomizar">
             <button id="boton-randomizar">Randomizar Parámetros</button>
         </section>
         
-        <section id="seleccion-de-personaje">
-            <div>
-                <p>Tu personaje es: <span id="personaje"></span></p>
-            </div>
-            <div id="seleccion-carrera-militar">
-                <p>Tu carrera militar es: <span id="carrera-militar"></span></p>
-            </div>
-            <div id="seleccion-poder-extra">
-                <p>Tu poder extra es: <span id="poder-extra"></span></p>
-            </div>
-        </section>
-        
-        <section id="seleccion-categoria-arma-principal">
-            <div>
-                <p>Tu tipo de arma principal es: <span id="tipo-de-arma"></span></p>
-            </div>
-            <div id="seleccion-arma-principal">
-                <p>Tu arma principal es: <span id="arma-principal"></span></p>
-            </div>
-            <div id="seleccion-upgrades-arma-principal">
-                <p>Tu Upgrade #1 en Arma Principal es: <span id="upgrade1-arma-principal"></span></p>
-                <p>Tu Upgrade #2 en Arma Principal es: <span id="upgrade2-arma-principal"></span></p>
-            </div>
-            <div id="seleccion-arma-secundaria">
-                <p>Tu arma secundaria es: <span id="arma-secundaria"></span></p>
-            </div>
-            <div id="seleccion-upgrades-arma-secundaria">
-                <p>Tu Upgrade #1 en Arma Secundaria es: <span id="upgrade1-arma-secundaria"></span></p>
-                <p>Tu Upgrade #2 en Arma Secundaria es: <span id="upgrade2-arma-secundaria"></span></p>
-            </div>
-        </section>
-        
-        <section id="seleccion-armadura">
-            <div>
-                <p>Tu armadura es: <span id="armadura"></span></p>
-            </div>
-            <div id="armadura-personalizada">
-                <span id="elementos-armadura-personalizada"></span>
-            </div>
-        </section>
-        
-        <section id="seleccion-peloton">
-            <div>
-                <p>Tu compañero #1 es: <span id="compañero-1"></span></p>
-                <p>Tu compañero #2 es: <span id="compañero-2"></span></p>
-            </div>
+        <section id="seccion-de-orden">
+            <section id="seleccion-de-personaje">
+                <p id="titulo-seccion">PERSONAJE</p>
+                <div>
+                    <p>Tu personaje es: <span class="item-aleatorio" id="personaje"></span></p>
+                </div>
+                <div id="seleccion-carrera-militar">
+                    <p>Tu carrera militar es: <span class="item-aleatorio" id="carrera-militar"></span></p>
+                </div>
+                <div id="seleccion-poder-extra">
+                    <p>Tu poder extra es: <span class="item-aleatorio" id="poder-extra"></span></p>
+                </div>
+            </section>
+            
+            <section id="seleccion-categoria-arma-principal">
+                <p id="titulo-seccion">ARMAMENTO</p>
+                <div>
+                    <p>Tu tipo de arma principal es: <span class="item-aleatorio" id="tipo-de-arma"></span></p>
+                </div>
+                <div id="seleccion-arma-principal">
+                    <p>Tu arma principal es: <span class="item-aleatorio" id="arma-principal"></span></p>
+                </div>
+                <div id="seleccion-upgrades-arma-principal">
+                    <p>Tu Mejora #1 en Arma Principal es: <span class="item-aleatorio" id="upgrade1-arma-principal"></span></p>
+                    <p>Tu Mejora #2 en Arma Principal es: <span class="item-aleatorio" id="upgrade2-arma-principal"></span></p>
+                </div>
+                <div id="seleccion-arma-secundaria">
+                    <p>Tu arma secundaria es: <span class="item-aleatorio" id="arma-secundaria"></span></p>
+                </div>
+                <div id="seleccion-upgrades-arma-secundaria">
+                    <p>Tu Mejora #1 en Arma Secundaria es: <span class="item-aleatorio" id="upgrade1-arma-secundaria"></span></p>
+                    <p>Tu Mejora #2 en Arma Secundaria es: <span class="item-aleatorio" id="upgrade2-arma-secundaria"></span></p>
+                </div>
+            </section>
+            
+            <section id="seleccion-armadura">
+                <p id="titulo-seccion">ARMADURA</p>
+                <div>
+                    <p>Tu armadura es: <span class="item-aleatorio" id="armadura"></span></p>
+                </div>
+                <div id="armadura-personalizada">
+                    <span class="item-aleatorio" id="elementos-armadura-personalizada"></span>
+                </div>
+            </section>
+            
+            <section id="seleccion-peloton">
+                <p id="titulo-seccion">PELOTÓN</p>
+                <div>
+                    <p>Tu compañero #1 es: <span class="item-aleatorio" id="compañero-1"></span></p>
+                    <p>Tu compañero #2 es: <span class="item-aleatorio" id="compañero-2"></span></p>
+                </div>
+            </section>
         </section>
 
         <script src="./JS/RandomizadorME.js"></script>

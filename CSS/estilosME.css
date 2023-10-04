@@ -8,8 +8,23 @@ body {
     background-color: black;
     font-family: "Orbitron";
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
+}
+
+body img {
+    height: 250px;
+    margin: 0px;
+}
+
+h1 {
+    margin-top: 0px;
+    text-shadow: -10px -7px 12px #009aff;
+}
+
+h2 {
+    margin: 10px;
+    text-shadow: -10px -7px 12px #009aff;
 }
 
 #boton-randomizar {
@@ -22,4 +37,56 @@ body {
     background: transparent;
     border: 3px solid #009aff;
     color: #ff4646;
+    margin: 15px;
+}
+
+#boton-randomizar:hover {
+    background: #009aff;
+    color: white;
+}
+
+#seccion-de-orden {
+    border: transparent;
+    width: 700px;
+}
+
+#titulo-seccion {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ff4646;
+    margin: 0px;
+}
+
+#seleccion-de-personaje {
+    border: 1.5px solid #009aff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+#seleccion-categoria-arma-principal {
+    border: 1.5px solid #009aff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+#seleccion-armadura {
+    border: 1.5px solid #009aff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+#seleccion-peloton {
+    border: 1.5px solid #009aff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.item-aleatorio {
+    color: #009aff;
+    font-size: 16px;
+    font-weight: 800;
 }

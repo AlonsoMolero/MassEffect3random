@@ -15,6 +15,7 @@ const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-pe
 const spanCompañero1 = document.getElementById("compañero-1")
 const spanCompañero2 = document.getElementById("compañero-2")
 
+
 let tipoDeArma
 let mejora1AP
 let mejora1AS
@@ -56,6 +57,8 @@ function iniciarRandomizador() {
 }
 
 function seleccionarPersonaje() {
+    botonRandomizador.disabled = true
+
     let personaje = aleatorio(0, personajes.length -1)
 
     spanPersonaje.innerHTML = personajes[personaje]

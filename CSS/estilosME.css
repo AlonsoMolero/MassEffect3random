@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@100&display=swap');
+
 body {
     background-color: black;
+    font-family: "Orbitron";
+    font-weight: bold;
+    font-size: 16px;
     color: white;
 }

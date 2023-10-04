@@ -2,9 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@100&display=swap');
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: black;
     font-family: "Orbitron";
     font-weight: bold;
     font-size: 16px;
     color: white;
+}
+
+#boton-randomizar {
+    font-family: "Orbitron";
+    font-size: 18px;
+    font-weight: 800;
+    width: 300px;
+    height: 40px;
+    border-radius: 14px;
+    background: transparent;
+    border: 3px solid #009aff;
+    color: #ff4646;
 }

@@ -59,7 +59,8 @@ h2 {
 }
 
 #boton-reiniciar:hover {
-    background: #009aff;
+    border: 3px solid #ff4646;
+    background: #ff4646;
     color: white;
 }
 

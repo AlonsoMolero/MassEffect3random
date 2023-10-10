@@ -104,6 +104,20 @@ h2 {
     padding: 10px;
 }
 
+#seleccion-armamento-peloton {
+    border: 1.5px solid #009aff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.titulo-compañero {
+    font-size: 20px;
+    font-weight: 800;
+    color: #009aff;
+    margin: 0px;
+}
+
 .item-aleatorio {
     color: #009aff;
     font-size: 16px;

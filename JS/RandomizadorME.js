@@ -16,12 +16,16 @@ const  spanArmadura = document.getElementById("armadura")
 const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-personalizada")
 const spanCompañero1 = document.getElementById("compañero-1")
 const spanCompañero2 = document.getElementById("compañero-2")
+const spanArmaPrincipalC1 = document.getElementById("arma-principal-compañero-1")
+const spanUpgrade1ArmaPrincipalC1 = document.getElementById("upgrade1-arma-principal-compañero-1")
+const spanUpgrade2ArmaPrincipalC1 = document.getElementById("upgrade2-arma-principal-compañero-1")
 
 
 let tipoDeArma
 let mejora1AP
 let mejora1AS
-let upgradesRestantes
+let compañero1Seleccionado
+let compañero2Seleccionado
 let personajes = ["Jhon Shepard", "Jane Shepard"]
 let carrerasMilitares = ["Soldado", "Infiltrado", "Vanguardia", "Centinela", "Adepto", "Ingeniero"]
 let poderesExtra = ["Carnicería", "Tirador", "Mina de proximidad", "Dron de defensa", "Drenaje de energía", "Granada inferno", "Asaltar", "Estasis", "Munición de alteración", "Barrera", "Matriz defensiva", "Fortificación", "Munición perforante", "Estrellar", "Fuerza oscura"]
@@ -36,6 +40,10 @@ let pistolasPesadas = ["Carnifex M-6", "Paladin M-77", "Phalanx M-5", "Predator 
 let upgradesFrancotiradores = ["Mira Mejorada", "Mod. Perforación", "Cañón Alargado", "Cargador Térmico", "Módulo de Concentración", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad"]
 
 let upgradesRifleDeAsalto = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
+
+let upgradesRifleDeAsaltoC1 = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
+
+let upgradesRifleDeAsaltoC2 = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
 
 let upgradesSubfusiles = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran Calibre", "Mejora de Cargador", "Materiales Ultraligeros", "Magnificador de Poderes", "Sistema de Retroceso", "Cañón de Gran Velocidad"]
 
@@ -334,7 +342,7 @@ function armaduraPersonalizada() {
 function seleccionarPeloton() {   
     let compañero1 = aleatorio(0, peloton.length -1)
     spanCompañero1.innerHTML = peloton[compañero1]
-    let compañero1Seleccionado = peloton[compañero1]
+    compañero1Seleccionado = peloton[compañero1]
 
     if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams") {
         let compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
@@ -359,11 +367,28 @@ function seleccionarPeloton() {
 
     let compañero2 = aleatorio(0, peloton.length -1)
     spanCompañero2.innerHTML = peloton[compañero2]
+    compañero2Seleccionado = peloton[compañero2]
 
     if (peloton[compañero2] === "Kaidan Alenko" || peloton[compañero2] === "Ashley Williams" || peloton[compañero2] === "Tali'Zorah") {
         let compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
         spanCompañero2.innerHTML = peloton[compañero2] + " " + "(Utiliza a " + pelotonInicial[compañero2Inicial] + " hasta conseguir a " + peloton[compañero2] + ")"
-    }   
+    }
+    
+    seleccionArmamentoC1()
+}
+
+function seleccionArmamentoC1() {
+    if (compañero1Seleccionado === "Javik" || compañero1Seleccionado === "Kaidan Alenko") {
+        let indiceArmaPrincipalC1 = aleatorio(0, riflesDeAsalto.length -1)
+        spanArmaPrincipalC1.innerHTML = riflesDeAsalto[indiceArmaPrincipalC1]
+
+        let indiceUpgrade1ArmaPrincipalC1 = aleatorio(0, upgradesRifleDeAsaltoC1.length -1)
+        spanUpgrade1ArmaPrincipalC1.innerHTML = upgradesRifleDeAsaltoC1[indiceUpgrade1ArmaPrincipalC1]
+        mejora1AP = upgradesRifleDeAsaltoC1[indiceUpgrade1ArmaPrincipalC1]
+        upgradesRifleDeAsaltoC1.splice(indiceUpgrade1ArmaPrincipalC1, 1)
+        
+
+    }
 }
 
 function reiniciar() {

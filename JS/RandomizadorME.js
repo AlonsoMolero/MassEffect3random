@@ -16,9 +16,15 @@ const  spanArmadura = document.getElementById("armadura")
 const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-personalizada")
 const spanCompañero1 = document.getElementById("compañero-1")
 const spanCompañero2 = document.getElementById("compañero-2")
+const spanTituloCompañero1 = document.getElementById("titulo-compañero-1")
+const spanTituloCompañero2 = document.getElementById("titulo-compañero-2")
 const spanArmaPrincipalC1 = document.getElementById("arma-principal-compañero-1")
 const spanUpgrade1ArmaPrincipalC1 = document.getElementById("upgrade1-arma-principal-compañero-1")
 const spanUpgrade2ArmaPrincipalC1 = document.getElementById("upgrade2-arma-principal-compañero-1")
+const spanArmaSecundariaC1 = document.getElementById("arma-secundaria-compañero-1")
+const spanUpgrade1ArmaSecundariaC1 = document.getElementById("upgrade1-arma-secundaria-compañero-1")
+const spanUpgrade2ArmaSecundariaC1 = document.getElementById("upgrade2-arma-secundaria-compañero-1")
+
 
 
 let tipoDeArma
@@ -39,6 +45,10 @@ let pistolasPesadas = ["Carnifex M-6", "Paladin M-77", "Phalanx M-5", "Predator 
 
 let upgradesFrancotiradores = ["Mira Mejorada", "Mod. Perforación", "Cañón Alargado", "Cargador Térmico", "Módulo de Concentración", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad"]
 
+let upgradesFrancotiradoresC1 = ["Mira Mejorada", "Mod. Perforación", "Cañón Alargado", "Cargador Térmico", "Módulo de Concentración", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad"]
+
+let upgradesFrancotiradoresC2 = ["Mira Mejorada", "Mod. Perforación", "Cañón Alargado", "Cargador Térmico", "Módulo de Concentración", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad"]
+
 let upgradesRifleDeAsalto = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
 
 let upgradesRifleDeAsaltoC1 = ["Mira de precisión", "Cañón Alargado", "Mod. Perforación", "Mejora de Cargador", "Estabilizador", "Materiales Ultraligeros", "Mira Térmica", "Cañón de Gran Velocidad", "Omnihoja"]
@@ -47,9 +57,21 @@ let upgradesRifleDeAsaltoC2 = ["Mira de precisión", "Cañón Alargado", "Mod. P
 
 let upgradesSubfusiles = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran Calibre", "Mejora de Cargador", "Materiales Ultraligeros", "Magnificador de Poderes", "Sistema de Retroceso", "Cañón de Gran Velocidad"]
 
+let upgradesSubfusilesC1 = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran Calibre", "Mejora de Cargador", "Materiales Ultraligeros", "Magnificador de Poderes", "Sistema de Retroceso", "Cañón de Gran Velocidad"]
+
+let upgradesSubfusilesC2 = ["Mira de Subfusil", "Sumidero de Calor", "Cañón Gran Calibre", "Mejora de Cargador", "Materiales Ultraligeros", "Magnificador de Poderes", "Sistema de Retroceso", "Cañón de Gran Velocidad"]
+
 let upgradesEscopetas = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", "Mod. Trituración", "Cargador Térmico", "Materiales Ultraligeros", "Omnihoja", "Cañón de Gran Velocidad"]
 
+let upgradesEscopetasC1 = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", "Mod. Trituración", "Cargador Térmico", "Materiales Ultraligeros", "Omnihoja", "Cañón de Gran Velocidad"]
+
+let upgradesEscopetasC2 = ["Cañón Delgado", "Cañón Gran Calibre", "Bayoneta", "Mod. Trituración", "Cargador Térmico", "Materiales Ultraligeros", "Omnihoja", "Cañón de Gran Velocidad"]
+
 let upgradesPistolas = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
+
+let upgradesPistolasC1 = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
+
+let upgradesPistolasC2 = ["Mira para Pistola", "Cañón de Gran Calibre", "Mejora de Cargador", "Mod. Perforación", "Aturdidor Cuerpo a Cuerpo", "Magnificador de Poderes", "Materiales Ultraligeros", "Cañón Pesado", "Sistema de Traumatismo Craneal"]
 
 let armaduras = ["Armadura Personalizada", "Armadura N7", "Armadura Hahne-Kedar", "Armadura Arsenal Armax", "Armadura Consejo de Serrice", "Armadura Fabricación de Kassa", "Armadura Tecnología Ariake", "Armadura Materiales Rosenkov", "Armadura de Cerberus", "Armadura Ajax de Cerberus", "Armadura de Terminus", "Armadura Inferno", "Armadura Sangre de Dragon", "Armadura de Recoletor", "Armadura Reckoner-Knight", "Armadura Defender de N7"]
 
@@ -343,6 +365,7 @@ function seleccionarPeloton() {
     let compañero1 = aleatorio(0, peloton.length -1)
     spanCompañero1.innerHTML = peloton[compañero1]
     compañero1Seleccionado = peloton[compañero1]
+    spanTituloCompañero1.innerHTML = compañero1Seleccionado
 
     if (peloton[compañero1] === "Kaidan Alenko" || peloton[compañero1] === "Ashley Williams") {
         let compañero1Inicial = aleatorio(0, pelotonInicial.length -1)
@@ -368,6 +391,7 @@ function seleccionarPeloton() {
     let compañero2 = aleatorio(0, peloton.length -1)
     spanCompañero2.innerHTML = peloton[compañero2]
     compañero2Seleccionado = peloton[compañero2]
+    spanTituloCompañero2.innerHTML = compañero2Seleccionado
 
     if (peloton[compañero2] === "Kaidan Alenko" || peloton[compañero2] === "Ashley Williams" || peloton[compañero2] === "Tali'Zorah") {
         let compañero2Inicial = aleatorio(0, pelotonInicial.length -1)
@@ -384,11 +408,230 @@ function seleccionArmamentoC1() {
 
         let indiceUpgrade1ArmaPrincipalC1 = aleatorio(0, upgradesRifleDeAsaltoC1.length -1)
         spanUpgrade1ArmaPrincipalC1.innerHTML = upgradesRifleDeAsaltoC1[indiceUpgrade1ArmaPrincipalC1]
-        mejora1AP = upgradesRifleDeAsaltoC1[indiceUpgrade1ArmaPrincipalC1]
-        upgradesRifleDeAsaltoC1.splice(indiceUpgrade1ArmaPrincipalC1, 1)
+        mejora1APC1 = upgradesRifleDeAsaltoC1[indiceUpgrade1ArmaPrincipalC1]
         
+        console.log(upgradesRifleDeAsaltoC1)
+        upgradesRifleDeAsaltoC1.splice(indiceUpgrade1ArmaPrincipalC1, 1)
+        console.log(upgradesRifleDeAsaltoC1)
 
+        resolverConflictoAsaltoC1()
+
+        console.log(upgradesRifleDeAsaltoC1)
+
+        let indiceUpgrade2ArmaPrincipalC1 = aleatorio(0, upgradesRifleDeAsaltoC1.length -1)
+        spanUpgrade2ArmaPrincipalC1.innerHTML = upgradesRifleDeAsaltoC1[indiceUpgrade2ArmaPrincipalC1]
+        
+        //Arma Secundaria Javik/Kaidan
+        
+        let indiceArmaSecundariaC1 = aleatorio(0, pistolasPesadas.length -1)
+        spanArmaSecundariaC1.innerHTML = pistolasPesadas[indiceArmaSecundariaC1]
+
+        let indiceUpgrade1ArmaSecundariaC1 = aleatorio(0, upgradesPistolasC1.length -1)
+        spanUpgrade1ArmaSecundariaC1.innerHTML = upgradesPistolasC1[indiceUpgrade1ArmaSecundariaC1]
+        mejora1ASC1 = upgradesPistolasC1[indiceUpgrade1ArmaSecundariaC1]
+
+        console.log(upgradesPistolasC1)
+        upgradesPistolasC1.splice(indiceUpgrade1ArmaSecundariaC1, 1)
+        console.log(upgradesPistolasC1)
+
+        resolverConflictoPistolaC1()
+
+        console.log(upgradesPistolasC1)
+
+        let indiceUpgrade2ArmaSecundariaC1 = aleatorio(0, upgradesPistolasC1.length -1)
+        spanUpgrade2ArmaSecundariaC1.innerHTML = upgradesPistolasC1[indiceUpgrade2ArmaSecundariaC1]
     }
+}
+
+function resolverConflictoFrancotiradorC1() {
+    if (mejora1APC1 === "Mira Mejorada") {
+        upgradesFrancotiradoresC1.splice(5, 1)
+    } 
+    else if (mejora1APC1 === "Cañón Alargado") {
+        upgradesFrancotiradoresC1.splice(6, 1)
+    }
+    else if (mejora1APC1 === "Módulo de Concentración") {
+        upgradesFrancotiradoresC1.splice(4, 1)
+    }
+    else if (mejora1APC1 === "Mira Térmica") {
+        upgradesFrancotiradoresC1.splice(0, 1)
+    } 
+    else if (mejora1APC1 === "Cañón de Gran Velocidad") {
+        upgradesFrancotiradoresC1.splice(2, 1)
+    }
+    else if (mejora1APC1 === "Materiales Ultraligeros") {
+        upgradesFrancotiradoresC1.splice(4, 1)   
+    }
+}
+
+function resolverConflictoAsaltoC1() {
+    if (mejora1APC1 === "Mira de precisión") {
+        upgradesRifleDeAsaltoC1.splice(5, 1)
+    } 
+    else if (mejora1APC1 === "Cañón Alargado") {
+        upgradesRifleDeAsaltoC1.splice(6, 1)
+    }
+    else if (mejora1APC1 === "Mod. Perforación") {
+        upgradesRifleDeAsaltoC1.splice(4, 1)
+    }
+    else if (mejora1APC1 === "Mira Térmica") {
+        upgradesRifleDeAsaltoC1.splice(0, 1)
+    } 
+    else if (mejora1APC1 === "Cañón de Gran Velocidad") {
+        upgradesRifleDeAsaltoC1.splice(1, 1)
+    }
+    else if (mejora1APC1 === "Materiales Ultraligeros") {
+        upgradesRifleDeAsaltoC1.splice(2, 1)   
+    }
+}
+
+function resolverConflictoSubfusilC1() {
+    if (mejora1APC1 === "Mira de Subfusil") {
+        upgradesSubfusilesC1.splice(4, 1)
+    } 
+    else if (mejora1APC1 === "Cañón Gran Calibre") {
+        upgradesSubfusilesC1.splice(6, 1)
+    }
+    else if (mejora1APC1 === "Materiales Ultraligeros") {
+        upgradesSubfusilesC1.splice(5, 1)
+    }
+    else if (mejora1APC1 === "Magnificador de Poderes") {
+        upgradesSubfusilesC1.splice(0, 1)
+    } 
+    else if (mejora1APC1 === "Cañón de Gran Velocidad") {
+        upgradesSubfusilesC1.splice(2, 1)
+    }
+    else if (mejora1APC1 === "Sistema de Retroceso") {
+        upgradesSubfusilesC1.splice(4, 1)   
+    }
+}
+
+function resolverConflictoEscopetaC1() {
+    if (mejora1APC1 === "Cañón Delgado") {
+        upgradesEscopetasC1.splice(4, 1)
+    } 
+    else if (mejora1APC1 === "Cañón Gran Calibre") {
+        upgradesEscopetasC1.splice(6, 1)
+    }
+    else if (mejora1APC1 === "Bayoneta") {
+        upgradesEscopetasC1.splice(5, 1)
+    }
+    else if (mejora1APC1 === "Materiales Ultraligeros") {
+        upgradesEscopetasC1.splice(0, 1)
+    } 
+    else if (mejora1APC1 === "Cañón de Gran Velocidad") {
+        upgradesEscopetasC1.splice(1, 1)
+    }
+    else if (mejora1APC1 === "Omnihoja") {
+        upgradesEscopetasC1.splice(2, 1)   
+    } 
+}
+
+function resolverConflictoPistolaC1() {
+    if (mejora1ASC1 === "Mira para Pistola") {
+        upgradesPistolasC1.splice(4, 1)
+    } 
+    else if (mejora1AS === "Cañón de Gran Calibre") {
+        upgradesPistolasC1.splice(6, 2)
+    }
+    else if (mejora1ASC1 === "Mejora de Cargador") {
+        upgradesPistolasC1.splice(5, 1)
+    }
+    else if (mejora1ASC1 === "Materiales Ultraligeros") {
+        upgradesPistolasC1.splice(2, 1)
+    } 
+    else if (mejora1ASC1 === "Cañón Pesado") {
+        upgradesPistolasC1.splice(7, 1)
+        upgradesPistolasC1.splice(1, 1)
+    }
+    else if (mejora1ASC1 === "Sistema de Traumatismo Craneal") {
+        upgradesPistolasC1.splice(7, 1)
+        upgradesPistolasC1.splice(1, 1)   
+    }
+}
+
+function resolverConflictoFrancotiradorC2() {
+    if (mejora1APC2 === "Mira Mejorada") {
+        upgradesFrancotiradoresC2.splice(5, 1)
+    } 
+    else if (mejora1APC2 === "Cañón Alargado") {
+        upgradesFrancotiradoresC2.splice(6, 1)
+    }
+    else if (mejora1APC2 === "Módulo de Concentración") {
+        upgradesFrancotiradoresC2.splice(4, 1)
+    }
+    else if (mejora1APC2 === "Mira Térmica") {
+        upgradesFrancotiradoresC2.splice(0, 1)
+    } 
+    else if (mejora1APC2 === "Cañón de Gran Velocidad") {
+        upgradesFrancotiradoresC2.splice(2, 1)
+    }
+    else if (mejora1APC2 === "Materiales Ultraligeros") {
+        upgradesFrancotiradoresC2.splice(4, 1)   
+    }
+}
+
+function resolverConflictoAsaltoC2() {
+    if (mejora1AC2 === "Mira de precisión") {
+        upgradesRifleDeAsaltoC2.splice(5, 1)
+    } 
+    else if (mejora1APC2 === "Cañón Alargado") {
+        upgradesRifleDeAsaltoC2.splice(6, 1)
+    }
+    else if (mejora1APC2 === "Mod. Perforación") {
+        upgradesRifleDeAsaltoC2.splice(4, 1)
+    }
+    else if (mejora1APC2 === "Mira Térmica") {
+        upgradesRifleDeAsaltoC2.splice(0, 1)
+    } 
+    else if (mejora1APC2 === "Cañón de Gran Velocidad") {
+        upgradesRifleDeAsalto.splice(1, 1)
+    }
+    else if (mejora1APC2 === "Materiales Ultraligeros") {
+        upgradesRifleDeAsaltoC2.splice(2, 1)   
+    }
+}
+
+function resolverConflictoSubfusilC2() {
+    if (mejora1APC2 === "Mira de Subfusil") {
+        upgradesSubfusilesC2.splice(4, 1)
+    } 
+    else if (mejora1APC2 === "Cañón Gran Calibre") {
+        upgradesSubfusilesC2.splice(6, 1)
+    }
+    else if (mejora1APC2 === "Materiales Ultraligeros") {
+        upgradesSubfusilesC2.splice(5, 1)
+    }
+    else if (mejora1APC2 === "Magnificador de Poderes") {
+        upgradesSubfusilesC2.splice(0, 1)
+    } 
+    else if (mejora1APC2 === "Cañón de Gran Velocidad") {
+        upgradesSubfusilesC2.splice(2, 1)
+    }
+    else if (mejora1APC2 === "Sistema de Retroceso") {
+        upgradesSubfusilesC2.splice(4, 1)   
+    }
+}
+
+function resolverConflictoEscopetaC2() {
+    if (mejora1APC2 === "Cañón Delgado") {
+        upgradesEscopetasC2.splice(4, 1)
+    } 
+    else if (mejora1APC2 === "Cañón Gran Calibre") {
+        upgradesEscopetasC2.splice(6, 1)
+    }
+    else if (mejora1APC2 === "Bayoneta") {
+        upgradesEscopetasC2.splice(5, 1)
+    }
+    else if (mejora1APC2 === "Materiales Ultraligeros") {
+        upgradesEscopetasC2.splice(0, 1)
+    } 
+    else if (mejora1APC2 === "Cañón de Gran Velocidad") {
+        upgradesEscopetas.splice(1, 1)
+    }
+    else if (mejora1APC2 === "Omnihoja") {
+        upgradesEscopetasC2.splice(2, 1)   
+    } 
 }
 
 function reiniciar() {

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@100&display=swap');
 
 body {
@@ -97,6 +96,11 @@ h2 {
     padding: 10px;
 }
 
+#titulo-elemento-armadura {
+    font-size: 14px;
+    color: white;
+}
+
 #seleccion-peloton {
     border: 1.5px solid #009aff;
     border-radius: 10px;
@@ -122,4 +126,14 @@ h2 {
     color: #009aff;
     font-size: 16px;
     font-weight: 800;
+}
+
+#leyenda {
+    margin-top: 20px;
+}
+
+#titulo-leyenda {
+    font-size: 16px;
+    font-weight: 800;
+    color: #009aff;
 }

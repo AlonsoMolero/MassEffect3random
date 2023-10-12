@@ -14,6 +14,7 @@ const spanUpgrade1ArmaSecundaria = document.getElementById("upgrade1-arma-secund
 const spanUpgrade2ArmaSecundaria = document.getElementById("upgrade2-arma-secundaria")
 const  spanArmadura = document.getElementById("armadura")
 const spanArmaduraPersonalizada = document.getElementById("elementos-armadura-personalizada")
+
 const spanCompañero1 = document.getElementById("compañero-1")
 const spanCompañero2 = document.getElementById("compañero-2")
 const spanTituloCompañero1 = document.getElementById("titulo-compañero-1")
@@ -25,6 +26,12 @@ const spanArmaSecundariaC1 = document.getElementById("arma-secundaria-compañero
 const spanUpgrade1ArmaSecundariaC1 = document.getElementById("upgrade1-arma-secundaria-compañero-1")
 const spanUpgrade2ArmaSecundariaC1 = document.getElementById("upgrade2-arma-secundaria-compañero-1")
 
+const spanArmaPrincipalC2 = document.getElementById("arma-principal-compañero-2")
+const spanUpgrade1ArmaPrincipalC2 = document.getElementById("upgrade1-arma-principal-compañero-2")
+const spanUpgrade2ArmaPrincipalC2 = document.getElementById("upgrade2-arma-principal-compañero-2")
+const spanArmaSecundariaC2 = document.getElementById("arma-secundaria-compañero-2")
+const spanUpgrade1ArmaSecundariaC2 = document.getElementById("upgrade1-arma-secundaria-compañero-2")
+const spanUpgrade2ArmaSecundariaC2 = document.getElementById("upgrade2-arma-secundaria-compañero-2")
 
 
 let tipoDeArma
@@ -32,7 +39,7 @@ let mejora1AP
 let mejora1AS
 let compañero1Seleccionado
 let compañero2Seleccionado
-let personajes = ["Jhon Shepard", "Jane Shepard"]
+let personajes = ["Male Shepard", "Female Shepard"]
 let carrerasMilitares = ["Soldado", "Infiltrado", "Vanguardia", "Centinela", "Adepto", "Ingeniero"]
 let poderesExtra = ["Carnicería", "Tirador", "Mina de proximidad", "Dron de defensa", "Drenaje de energía", "Granada inferno", "Asaltar", "Estasis", "Munición de alteración", "Barrera", "Matriz defensiva", "Fortificación", "Munición perforante", "Estrellar", "Fuerza oscura"]
 let tiposDeArmas = ["Rifle Francotirador", "Rifle de Asalto", "Subfusil", "Escopeta"]
@@ -347,11 +354,11 @@ function armaduraPersonalizada() {
     let elementoBrazo = document.createElement("p")
     let elementoPierna = document.createElement("p")
 
-    elementoCasco.innerHTML = "Casco: " + cascos[casco]
-    elementoPecho.innerHTML = "Pecho: " + conjuntoInferior[pecho]
-    elementoHombro.innerHTML = "Hombros: " + conjuntoInferior[hombro]
-    elementoBrazo.innerHTML = "Brazos: " + conjuntoInferior[brazo]
-    elementoPierna.innerHTML = "Pierna: " + conjuntoInferior[pierna]
+    elementoCasco.innerHTML = `<span id="titulo-elemento-armadura">Casco: </span>${cascos[casco]}`
+    elementoPecho.innerHTML =  `<span id="titulo-elemento-armadura">Pecho: </span>${conjuntoInferior[pecho]}`
+    elementoHombro.innerHTML = `<span id="titulo-elemento-armadura">Hombros: </span>${conjuntoInferior[hombro]}`
+    elementoBrazo.innerHTML = `<span id="titulo-elemento-armadura">Brazos: </span>${conjuntoInferior[brazo]}`
+    elementoPierna.innerHTML = `<span id="titulo-elemento-armadura">Piernas: </span>${conjuntoInferior[pierna]}`
 
     spanArmaduraPersonalizada.appendChild(elementoCasco)
     spanArmaduraPersonalizada.appendChild(elementoPecho)
@@ -547,6 +554,155 @@ function seleccionArmamentoC1() {
         let indiceUpgrade2ArmaSecundariaC1 = aleatorio(0, upgradesPistolasC1.length -1)
         spanUpgrade2ArmaSecundariaC1.innerHTML = upgradesPistolasC1[indiceUpgrade2ArmaSecundariaC1]
     }
+    seleccionArmamentoC2()
+}
+
+function seleccionArmamentoC2() {
+    if (compañero2Seleccionado === "Javik" || compañero2Seleccionado === "Kaidan Alenko") {
+        let indiceArmaPrincipalC2 = aleatorio(0, riflesDeAsalto.length -1)
+        spanArmaPrincipalC2.innerHTML = riflesDeAsalto[indiceArmaPrincipalC2]
+
+        let indiceUpgrade1ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade1ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        mejora1APC2 = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        upgradesRifleDeAsaltoC2.splice(indiceUpgrade1ArmaPrincipalC2, 1)
+
+        resolverConflictoAsaltoC2()
+
+        let indiceUpgrade2ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade2ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade2ArmaPrincipalC2]
+        
+        //Arma Secundaria Javik/Kaidan
+        
+        let indiceArmaSecundariaC2 = aleatorio(0, pistolasPesadas.length -1)
+        spanArmaSecundariaC2.innerHTML = pistolasPesadas[indiceArmaSecundariaC2]
+
+        let indiceUpgrade1ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade1ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        mejora1ASC2 = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        upgradesPistolasC2.splice(indiceUpgrade1ArmaSecundariaC2, 1)
+
+        resolverConflictoPistolaC2()
+
+        let indiceUpgrade2ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade2ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade2ArmaSecundariaC2]
+    }
+    else if (compañero2Seleccionado === "Liara T'Soni" || compañero2Seleccionado === "SID") {
+        let indiceArmaPrincipalC2 = aleatorio(0, subfusiles.length -1)
+        spanArmaPrincipalC2.innerHTML = subfusiles[indiceArmaPrincipalC2]
+
+        let indiceUpgrade1ArmaPrincipalC2 = aleatorio(0, upgradesSubfusilesC2.length -1)
+        spanUpgrade1ArmaPrincipalC2.innerHTML = upgradesSubfusilesC2[indiceUpgrade1ArmaPrincipalC2]
+        mejora1APC2 = upgradesSubfusilesC2[indiceUpgrade1ArmaPrincipalC2]
+        upgradesSubfusilesC2.splice(indiceUpgrade1ArmaPrincipalC2, 1)
+
+        resolverConflictoSubfusilC2()
+
+        let indiceUpgrade2ArmaPrincipalC2 = aleatorio(0, upgradesSubfusilesC2.length -1)
+        spanUpgrade2ArmaPrincipalC2.innerHTML = upgradesSubfusilesC2[indiceUpgrade2ArmaPrincipalC2]
+        
+        //Arma Secundaria Liara/SID
+        
+        let indiceArmaSecundariaC2 = aleatorio(0, pistolasPesadas.length -1)
+        spanArmaSecundariaC2.innerHTML = pistolasPesadas[indiceArmaSecundariaC2]
+
+        let indiceUpgrade1ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade1ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        mejora1ASC2 = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        upgradesPistolasC2.splice(indiceUpgrade1ArmaSecundariaC2, 1)
+
+        resolverConflictoPistolaC2()
+
+        let indiceUpgrade2ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade2ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade2ArmaSecundariaC2]
+    }
+    else if (compañero2Seleccionado === "Garrus Vakarian" || compañero2Seleccionado === "Ashley Williams") {
+        let indiceArmaPrincipalC2 = aleatorio(0, riflesDeAsalto.length -1)
+        spanArmaPrincipalC2.innerHTML = riflesDeAsalto[indiceArmaPrincipalC2]
+
+        let indiceUpgrade1ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade1ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        mejora1APC2 = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        upgradesRifleDeAsaltoC2.splice(indiceUpgrade1ArmaPrincipalC2, 1)
+
+        resolverConflictoAsaltoC2()
+
+        let indiceUpgrade2ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade2ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade2ArmaPrincipalC2]
+        
+        //Arma Secundaria Garrus/Ashley
+        
+        let indiceArmaSecundariaC2 = aleatorio(0, riflesFrancotiradores.length -1)
+        spanArmaSecundariaC2.innerHTML = riflesFrancotiradores[indiceArmaSecundariaC2]
+
+        let indiceUpgrade1ArmaSecundariaC2 = aleatorio(0, upgradesFrancotiradoresC2.length -1)
+        spanUpgrade1ArmaSecundariaC2.innerHTML = upgradesFrancotiradoresC2[indiceUpgrade1ArmaSecundariaC2]
+        mejora1ASC2 = upgradesFrancotiradoresC2[indiceUpgrade1ArmaSecundariaC2]
+        upgradesFrancotiradoresC2.splice(indiceUpgrade1ArmaSecundariaC2, 1)
+
+        resolverConflictoFrancotiradorC2()
+
+        let indiceUpgrade2ArmaSecundariaC2 = aleatorio(0, upgradesFrancotiradoresC2.length -1)
+        spanUpgrade2ArmaSecundariaC2.innerHTML = upgradesFrancotiradoresC2[indiceUpgrade2ArmaSecundariaC2]
+    }
+    else if (compañero2Seleccionado === "James Vega") {
+        let indiceArmaPrincipalC2 = aleatorio(0, riflesDeAsalto.length -1)
+        spanArmaPrincipalC2.innerHTML = riflesDeAsalto[indiceArmaPrincipalC2]
+
+        let indiceUpgrade1ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade1ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        mejora1APC2 = upgradesRifleDeAsaltoC2[indiceUpgrade1ArmaPrincipalC2]
+        upgradesRifleDeAsaltoC2.splice(indiceUpgrade1ArmaPrincipalC2, 1)
+
+        resolverConflictoAsaltoC2()
+
+        let indiceUpgrade2ArmaPrincipalC2 = aleatorio(0, upgradesRifleDeAsaltoC2.length -1)
+        spanUpgrade2ArmaPrincipalC2.innerHTML = upgradesRifleDeAsaltoC2[indiceUpgrade2ArmaPrincipalC2]
+        
+        //Arma Secundaria James
+        
+        let indiceArmaSecundariaC2 = aleatorio(0, escopetas.length -1)
+        spanArmaSecundariaC2.innerHTML = escopetas[indiceArmaSecundariaC2]
+
+        let indiceUpgrade1ArmaSecundariaC2 = aleatorio(0, upgradesEscopetasC2.length -1)
+        spanUpgrade1ArmaSecundariaC2.innerHTML = upgradesEscopetasC2[indiceUpgrade1ArmaSecundariaC2]
+        mejora1ASC2 = upgradesEscopetasC2[indiceUpgrade1ArmaSecundariaC2]
+        upgradesEscopetasC2.splice(indiceUpgrade1ArmaSecundariaC2, 1)
+
+        resolverConflictoEscopetaC2()
+
+        let indiceUpgrade2ArmaSecundariaC2 = aleatorio(0, upgradesEscopetasC2.length -1)
+        spanUpgrade2ArmaSecundariaC2.innerHTML = upgradesEscopetasC2[indiceUpgrade2ArmaSecundariaC2]
+    }
+    else if (compañero2Seleccionado === "Tali'Zorah") {
+        let indiceArmaPrincipalC2 = aleatorio(0, escopetas.length -1)
+        spanArmaPrincipalC2.innerHTML = escopetas[indiceArmaPrincipalC2]
+
+        let indiceUpgrade1ArmaPrincipalC2 = aleatorio(0, upgradesEscopetasC2.length -1)
+        spanUpgrade1ArmaPrincipalC2.innerHTML = upgradesEscopetasC2[indiceUpgrade1ArmaPrincipalC2]
+        mejora1APC2 = upgradesEscopetasC2[indiceUpgrade1ArmaPrincipalC2]
+        upgradesEscopetasC2.splice(indiceUpgrade1ArmaPrincipalC2, 1)
+
+        resolverConflictoEscopetaC2()
+
+        let indiceUpgrade2ArmaPrincipalC2 = aleatorio(0, upgradesEscopetasC2.length -1)
+        spanUpgrade2ArmaPrincipalC2.innerHTML = upgradesEscopetasC2[indiceUpgrade2ArmaPrincipalC2]
+        
+        //Arma Secundaria Tali
+        
+        let indiceArmaSecundariaC2 = aleatorio(0, pistolasPesadas.length -1)
+        spanArmaSecundariaC2.innerHTML = pistolasPesadas[indiceArmaSecundariaC2]
+
+        let indiceUpgrade1ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade1ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        mejora1ASC2 = upgradesPistolasC2[indiceUpgrade1ArmaSecundariaC2]
+        upgradesPistolasC2.splice(indiceUpgrade1ArmaSecundariaC2, 1)
+
+        resolverConflictoPistolaC2()
+
+        let indiceUpgrade2ArmaSecundariaC2 = aleatorio(0, upgradesPistolasC2.length -1)
+        spanUpgrade2ArmaSecundariaC2.innerHTML = upgradesPistolasC2[indiceUpgrade2ArmaSecundariaC2]
+    }
 }
 
 function resolverConflictoFrancotiradorC1() {
@@ -637,7 +793,7 @@ function resolverConflictoPistolaC1() {
     if (mejora1ASC1 === "Mira para Pistola") {
         upgradesPistolasC1.splice(4, 1)
     } 
-    else if (mejora1AS === "Cañón de Gran Calibre") {
+    else if (mejora1ASC1 === "Cañón de Gran Calibre") {
         upgradesPistolasC1.splice(6, 2)
     }
     else if (mejora1ASC1 === "Mejora de Cargador") {
@@ -678,7 +834,7 @@ function resolverConflictoFrancotiradorC2() {
 }
 
 function resolverConflictoAsaltoC2() {
-    if (mejora1AC2 === "Mira de precisión") {
+    if (mejora1APC2 === "Mira de precisión") {
         upgradesRifleDeAsaltoC2.splice(5, 1)
     } 
     else if (mejora1APC2 === "Cañón Alargado") {
@@ -738,6 +894,29 @@ function resolverConflictoEscopetaC2() {
     else if (mejora1APC2 === "Omnihoja") {
         upgradesEscopetasC2.splice(2, 1)   
     } 
+}
+
+function resolverConflictoPistolaC2() {
+    if (mejora1ASC2 === "Mira para Pistola") {
+        upgradesPistolasC2.splice(4, 1)
+    } 
+    else if (mejora1ASC2 === "Cañón de Gran Calibre") {
+        upgradesPistolasC2.splice(6, 2)
+    }
+    else if (mejora1ASC2 === "Mejora de Cargador") {
+        upgradesPistolasC2.splice(5, 1)
+    }
+    else if (mejora1ASC2 === "Materiales Ultraligeros") {
+        upgradesPistolasC2.splice(2, 1)
+    } 
+    else if (mejora1ASC2 === "Cañón Pesado") {
+        upgradesPistolasC2.splice(7, 1)
+        upgradesPistolasC2.splice(1, 1)
+    }
+    else if (mejora1ASC2 === "Sistema de Traumatismo Craneal") {
+        upgradesPistolasC2.splice(7, 1)
+        upgradesPistolasC2.splice(1, 1)   
+    }
 }
 
 function reiniciar() {
